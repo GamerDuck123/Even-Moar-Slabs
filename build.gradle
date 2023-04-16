@@ -48,6 +48,17 @@ tasks.withType(JavaCompile).configureEach {
         it.options.release = targetJavaVersion
     }
 }
+modrinth {
+
+    token = System.getenv("MODRINTH_TOKEN")
+    projectId = "ksv0E6ap"
+    versionNumber = project.version
+    versionType = "alpha"
+    uploadFile = remapJar
+    gameVersions = ["1.19.4"]
+    loaders = ["fabric"]
+    syncBodyFrom = rootProject.file("README.md").text
+}
 
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
